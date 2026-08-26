@@ -1,0 +1,12 @@
+#Name
+
+simple shell
+
+#Synopsis
+
+shell [command]
+
+#Description
+
+simple shell is a simple command language interpreter built for the purpose of
+learning.
