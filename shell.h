@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 
 #define PROMPT "#cisfun$ "
-
+char *read_line(void)
+void remove_newline(char *line);
 
 #endif /* SHELL_H */
