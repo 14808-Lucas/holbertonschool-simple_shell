@@ -12,7 +12,7 @@ int print_tokens(char *str)
 	{	
 		count++;
 		if (strcmp(token, "\0") != 0)
-			printf("%s.\n", token);
+			printf("%s\n", token);
 		token = strtok(NULL, delim);
 	}
 	printf("arg count was %d\n", count);
@@ -32,6 +32,8 @@ int main()
 		{
 			print_tokens(charline);	
 		}
+		if (feof(stdin))
+			state = 1;
 	}
 	return (0);
 }
