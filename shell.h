@@ -11,5 +11,6 @@
 #define PROMPT "$$$ "
 char *read_line(void);
 void remove_newline(char *line);
+int execute_command(char *command, char **envp, char *prog_name);
 
 #endif /* SHELL_H */
