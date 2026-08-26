@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define PROMPT "#cisfun$ "
+#define PROMPT "$$$ "
 char *read_line(void);
 void remove_newline(char *line);
 
