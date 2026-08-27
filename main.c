@@ -9,11 +9,7 @@ int main()
 {
 	int state = 0;
 	char *charline;
-	
-	char *ENV = getenv("PATH");
 	extern char **environ;
-
-	/*printf("PATH = %s\n", ENV);*/
 
 	while (state == 0)
 	{
