@@ -11,6 +11,8 @@ int main()
 	char *charline;
 	extern char **environ;
 
+	signal(SIGINT, handle_sigint)
+
 	while (state == 0)
 	{
 		printf(PROMPT);
