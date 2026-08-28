@@ -15,6 +15,8 @@ int main()
 	extern char **environ;
 	char *tokens[maxtok];
 
+	signal(SIGINT, handle_sigint)
+
 	while (state == 0)
 	{
 		printf(PROMPT);

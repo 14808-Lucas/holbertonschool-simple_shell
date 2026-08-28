@@ -29,6 +29,7 @@ int execute_command(char *command, char **envp, char *prog_name)
 
 	if (child_pid == 0)
 	{
+		signal(SIGINT, SIG_DFL);
 		if (execve(argv[0], argv, envp) == -1)
 		{
 			perror(prog_name);
