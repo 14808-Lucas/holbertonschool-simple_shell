@@ -10,14 +10,13 @@ int main()
 	int tokcnt = 0;
 	int i = 0;
 	int maxtok = 10;
-	int state = 0;
 	char *charline;
 	extern char **environ;
 	char *tokens[maxtok];
 
-	signal(SIGINT, handle_sigint)
+	signal(SIGINT, handle_sigint);
 
-	while (state == 0)
+	while (1)
 	{
 		printf(PROMPT);
 		charline = read_line();
@@ -35,7 +34,7 @@ int main()
 			}
 		}
 		if (feof(stdin))
-			state = 1;
+			break;
 	}
 	return (0);
 }

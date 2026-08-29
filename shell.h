@@ -11,6 +11,7 @@
 
 #define PROMPT "$$$ "
 
+int load_tokens(char **tokens, char *line, int size);
 int print_tokens(char *str);
 char *read_line(void);
 void remove_newline(char *line);
