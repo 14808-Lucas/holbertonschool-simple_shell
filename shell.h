@@ -14,7 +14,6 @@
 
 void print_prompt(void);
 int load_tokens(char **tokens, char *line, int size, int phase);
-int print_tokens(char *str);
 char *read_line(void);
 void remove_newline(char *line);
 int execute_command(char **argv, char **envp, char *prog_name);

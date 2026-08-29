@@ -2,16 +2,18 @@
 
 /**
  * main - the main shell function, prints a prompt and interprets commands
+ * creates two arrays to record received commands, firstly split by pipes
+ * secondly, split by spaces. laying the groundwork for piping cmds
  * Return: always 0
  */
 
-int main()
+int main(void)
 {
 	int tokcnt = 0;
 	int i = 0;
 	int maxtok = 10;
 	char *charline;
-	extern char **environ;
+	char **environ;
 	char *tokens[maxtok];
 	char *cmd[maxtok];
 
@@ -25,7 +27,7 @@ int main()
 		{
 			tokcnt = load_tokens(tokens, charline, maxtok, 0);
 			if (tokcnt > 0)
-			{	
+			{
 				i = 0;
 				while (i < tokcnt)
 				{

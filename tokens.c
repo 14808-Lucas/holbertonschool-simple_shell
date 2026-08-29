@@ -6,6 +6,7 @@
  * @tokens: the array
  * @line: the input line string
  * @size: the size of the array
+ * @phase: determines which delim to use, space or pipe
  * Return: the number of tokens found
  */
 
@@ -21,7 +22,7 @@ int load_tokens(char **tokens, char *line, int size, int phase)
 	token = strtok(line, delim);
 	if (token == NULL)
 		return (0);
-	
+
 	tokens[count] = token;
 	while (token != NULL && count < size)
 	{
@@ -33,5 +34,5 @@ int load_tokens(char **tokens, char *line, int size, int phase)
 		}
 	}
 	tokens[count + 1] = NULL;
-        return (count);
+	return (count);
 }
