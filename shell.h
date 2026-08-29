@@ -10,13 +10,14 @@
 #include <signal.h>
 
 #define PROMPT "$$$ "
+#define HANDLE "cool shell"
 
 void print_prompt(void);
-int load_tokens(char **tokens, char *line, int size);
+int load_tokens(char **tokens, char *line, int size, int phase);
 int print_tokens(char *str);
 char *read_line(void);
 void remove_newline(char *line);
-int execute_command(char *command, char **envp, char *prog_name);
+int execute_command(char **argv, char **envp, char *prog_name);
 void handle_sigint(int sig);
 
 #endif /* SHELL_H */

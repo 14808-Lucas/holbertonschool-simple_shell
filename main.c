@@ -13,6 +13,7 @@ int main()
 	char *charline;
 	extern char **environ;
 	char *tokens[maxtok];
+	char *cmd[maxtok];
 
 	signal(SIGINT, handle_sigint);
 
@@ -22,19 +23,23 @@ int main()
 		charline = read_line();
 		if (charline != NULL)
 		{
-			tokcnt = load_tokens(tokens, charline, maxtok);
+			tokcnt = load_tokens(tokens, charline, maxtok, 0);
 			if (tokcnt > 0)
 			{	
 				i = 0;
 				while (i < tokcnt)
 				{
-					execute_command(tokens[i], environ, "thishell" );
+					load_tokens(cmd, tokens[i], maxtok, 1);
+					execute_command(cmd, environ, HANDLE);
 					i++;
 				}
 			}
 		}
 		if (feof(stdin))
+		{
+			printf("\n");
 			break;
+		}
 	}
 	return (0);
 }

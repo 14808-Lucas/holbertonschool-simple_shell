@@ -9,20 +9,20 @@
  * Return: the number of tokens found
  */
 
-int load_tokens(char **tokens, char *line, int size)
+int load_tokens(char **tokens, char *line, int size, int phase)
 {
-	const char delim[] = " \n";
 	char *token;
 	int count = 0;
+	char delim[] = "|\n";
+
+	if (phase != 0)
+		delim[0] = ' ';
 
 	token = strtok(line, delim);
-	if (token != NULL)
-		tokens[count] = token;
-	else
-	{
-		/*printf("no tokens received\n");*/
+	if (token == NULL)
 		return (0);
-	}
+	
+	tokens[count] = token;
 	while (token != NULL && count < size)
 	{
 		count++;
@@ -32,6 +32,6 @@ int load_tokens(char **tokens, char *line, int size)
 			tokens[count] = token;
 		}
 	}
-	/*printf("token count was %d\n", count);*/
+	tokens[count + 1] = NULL;
         return (count);
 }
