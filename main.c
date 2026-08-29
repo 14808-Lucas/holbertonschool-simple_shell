@@ -18,7 +18,7 @@ int main()
 
 	while (1)
 	{
-		printf(PROMPT);
+		print_prompt();
 		charline = read_line();
 		if (charline != NULL)
 		{
