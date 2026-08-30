@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <limits.h>
 
 #define PROMPT "$$$ "
 #define HANDLE "cool shell"
