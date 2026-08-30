@@ -12,6 +12,8 @@
 #define PROMPT "$$$ "
 #define HANDLE "cool shell"
 
+extern char **environ;
+
 void print_prompt(void);
 int load_tokens(char **tokens, char *line, int size, int phase);
 char *read_line(void);
