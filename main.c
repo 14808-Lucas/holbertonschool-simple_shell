@@ -14,7 +14,6 @@ int main(int argc, char **argv)
 	int i = 0;
 	int is_eof;
 	int status = 0;
-	char c;
 	char *charline;
 	char *tokens[MAXTOK];
 	char *cmd[MAXTOK];
