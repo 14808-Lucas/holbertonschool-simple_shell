@@ -1,5 +1,4 @@
 #include "shell.h"
-#define MAXTOK 10
 
 /**
  * main - the main shell function, prints a prompt and interprets commands
@@ -10,18 +9,16 @@
 
 int main(int argc, char **argv)
 {
-	int tokcnt = 0;
-	int i = 0;
-	int is_eof;
-	int status = 0;
-	int cmd_argc;
+	int i, is_eof, cmd_argc, status, tokcnt;
+	size_t n = 6;
 	char *charline;
-	char *tokens[MAXTOK];
-	char *cmd[MAXTOK];
+	char **tokens = alloc_string_array(n);
+	char **cmd = alloc_string_array(n);
 
 	(void)argc;
 	signal(SIGINT, handle_sigint);
 	
+	tokcnt = status = 0;
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -29,13 +26,13 @@ int main(int argc, char **argv)
 		charline = read_line(&is_eof);
 		if (charline != NULL)
 		{
-			tokcnt = load_tokens(tokens, charline, MAXTOK, 0);
+			tokcnt = load_tokens(tokens, charline, n, 0);
 			if (tokcnt > 0)
 			{
 				i = 0;
 				while (i < tokcnt)
 				{
-					cmd_argc = load_tokens(cmd, tokens[i], MAXTOK, 1);
+					cmd_argc = load_tokens(cmd, tokens[i], n, 1);
 					if (cmd_argc > 0)
 						status = execute_command(cmd, environ, argv[0]);
 					i++;
@@ -47,6 +44,8 @@ int main(int argc, char **argv)
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
+			free_string_array(tokens, n);
+			free_string_array(cmd, n);
 			exit(0);
 		}
 	}

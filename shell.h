@@ -16,6 +16,8 @@
 
 extern char **environ;
 
+char **alloc_string_array(size_t size);
+void free_string_array(char **array, size_t size);
 void print_prompt(void);
 int load_tokens(char **tokens, char *line, int size, int phase);
 char *read_line(int *is_eof);
