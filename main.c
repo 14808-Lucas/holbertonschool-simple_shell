@@ -41,14 +41,11 @@ int main(int argc, char **argv)
 			}
 			free(charline);
 		}
-		else
+		if (is_eof)
 		{
-			if (is_eof)
-			{
-				if (isatty(STDIN_FILENO))
-					printf("\n");
-				exit(0);
-			}
+			if (isatty(STDIN_FILENO))
+				printf("\n");
+			exit(0);
 		}
 	}
 	return (status);
