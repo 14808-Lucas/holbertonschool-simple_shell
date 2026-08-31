@@ -36,7 +36,7 @@ void free_string_array(char **array, size_t size)
 		return;
 	while (i < size)
 	{
-		printf("freeing: %li\n", i);
+		/*printf("freeing: %li\n", i);*/
 		free(array[i]);
 		i++;
 	}
