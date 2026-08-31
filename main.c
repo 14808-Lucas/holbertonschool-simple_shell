@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 
 	(void)argc;
 	signal(SIGINT, handle_sigint);
-	print_prompt();
+	
 	while (1)
 	{
 		/*print_prompt();*/
