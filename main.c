@@ -39,11 +39,11 @@ int main(int argc, char **argv)
 			}
 			free(charline);
 		}
-		if (feof(stdin))
-		{
-			printf("\n");
-			break;
-		}
+		/*if (feof(stdin))*/
+		/*{*/
+		/*	printf("\n");*/
+		/*	break;*/
+		/*}*/
 	}
 	return (status);
 }
