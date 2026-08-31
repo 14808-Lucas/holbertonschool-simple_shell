@@ -45,7 +45,8 @@ int main(int argc, char **argv)
 		{
 			if (is_eof)
 			{
-				printf("\n");
+				if (isatty(STDIN_FILENO))
+					printf("\n");
 				exit(0);
 			}
 		}
