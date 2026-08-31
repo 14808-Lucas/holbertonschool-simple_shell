@@ -1,32 +1,41 @@
 #include "shell.h"
 
 /**
- * execute_command - forks a child process and executes a single-word
- * command with execve
- * @argv: the command to run including arguments (must be absolute
- * since this version does not search PATH)
+ * execute_command - forks a child process and executes a
+ * command with execve, resolving it through PATH first.
+ * @argv: the command to run including arguments, already tokenized
  * @envp: environment variables to pass through to the new program
  * @prog_name: the name the shell itself was invoked with (argv[0]),
  * used to prefix error messages exactly like /bin/sh does
  *
- * Return: the exit status of the child process, or 1 if fork failed
+ * Return: the exit status of the child process, 127 if the command could
+ * not be resolved via PATH,  or 1 if fork failed
  */
 int execute_command(char **argv, char **envp, char *prog_name)
 {
 	pid_t child_pid;
 	int status;
+	char *full_path;
+
+	full_path = find_command_path(argv[0], envp);
+	if (full_path == NULL)
+	{
+		fprintf(stderr, "%s: %s: not found\n", prog_name, argv[0]);
+		return (127);
+	}
 
 	child_pid = fork();
 	if (child_pid == -1)
 	{
 		perror(prog_name);
+		free(full_path);
 		return (1);
 	}
 
 	if (child_pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
-		if (execve(argv[0], argv, envp) == -1)
+		if (execve(full_path, argv, envp) == -1)
 		{
 			perror(prog_name);
 			_exit(127);
@@ -35,6 +44,7 @@ int execute_command(char **argv, char **envp, char *prog_name)
 	else
 	{
 		wait(&status);
+		free(full_path);
 		if (WIFEXITED(status))
 			return (WEXITSTATUS(status));
 	}
