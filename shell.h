@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <limits.h>
+#include <errno.h>
 
 #define PROMPT "$$$ "
 #define HANDLE "cool shell"
@@ -17,7 +18,7 @@ extern char **environ;
 
 void print_prompt(void);
 int load_tokens(char **tokens, char *line, int size, int phase);
-char *read_line(void);
+char *read_line(int *is_eof);
 void remove_newline(char *line);
 int execute_command(char **argv, char **envp, char *prog_name);
 void handle_sigint(int sig);

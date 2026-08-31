@@ -12,7 +12,9 @@ int main(int argc, char **argv)
 {
 	int tokcnt = 0;
 	int i = 0;
+	int is_eof;
 	int status = 0;
+	char c;
 	char *charline;
 	char *tokens[MAXTOK];
 	char *cmd[MAXTOK];
@@ -22,8 +24,9 @@ int main(int argc, char **argv)
 	
 	while (1)
 	{
-		/*print_prompt();*/
-		charline = read_line();
+		if (isatty(STDIN_FILENO))
+			print_prompt();
+		charline = read_line(&is_eof);
 		if (charline != NULL)
 		{
 			tokcnt = load_tokens(tokens, charline, MAXTOK, 0);
@@ -39,11 +42,14 @@ int main(int argc, char **argv)
 			}
 			free(charline);
 		}
-		/*if (feof(stdin))*/
-		/*{*/
-		/*	printf("\n");*/
-		/*	break;*/
-		/*}*/
+		else
+		{
+			if (is_eof)
+			{
+				printf("\n");
+				exit(0);
+			}
+		}
 	}
 	return (status);
 }

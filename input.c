@@ -6,19 +6,22 @@
  * Return: a malloc'd string containing the line read (including any
  * trailing newline), or NULL if EOF was reached or an error occurred
  */
-char *read_line(void)
+char *read_line(int *is_eof)
 {
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t nread;
 
+	errno = 0;
+	*is_eof = 0;
 	nread = getline(&line, &len, stdin);
 	if (nread == -1)
 	{
 		free(line);
+		if (errno == 0)
+			*is_eof = 1;
 		return (NULL);
 	}
-
 	return (line);
 }
 
