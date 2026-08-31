@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	int i = 0;
 	int is_eof;
 	int status = 0;
+	int cmd_argc;
 	char *charline;
 	char *tokens[MAXTOK];
 	char *cmd[MAXTOK];
@@ -34,8 +35,9 @@ int main(int argc, char **argv)
 				i = 0;
 				while (i < tokcnt)
 				{
-					load_tokens(cmd, tokens[i], MAXTOK, 1);
-					status = execute_command(cmd, environ, argv[0]);
+					cmd_argc = load_tokens(cmd, tokens[i], MAXTOK, 1);
+					if (cmd_argc > 0)
+						status = execute_command(cmd, environ, argv[0]);
 					i++;
 				}
 			}
