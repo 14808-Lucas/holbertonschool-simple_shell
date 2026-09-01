@@ -41,13 +41,7 @@ int main(int argc, char **argv)
 			free(charline);
 		}
 		if (is_eof)
-		{
-			if (isatty(STDIN_FILENO))
-				printf("\n");
-			free_string_array(tokens, n);
-			free_string_array(cmd, n);
-			exit(0);
-		}
+			clean_exit(tokens, cmd, n);
 	}
 	return (status);
 }

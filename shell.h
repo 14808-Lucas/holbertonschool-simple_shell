@@ -28,5 +28,6 @@ char *get_env_value(char **envp, const char *name);
 char *duplicate_string(const char *str);
 char *join_path(char *dir, char *command);
 char *find_command_path(char *command, char **envp);
+void clean_exit(char **array1, char **array2, size_t n);
 
 #endif /* SHELL_H */
