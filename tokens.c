@@ -23,10 +23,10 @@ int load_tokens(char **tokens, char *line, int size, int phase)
 	if (token == NULL)
 		return (0);
 
-	tokens[count] = token;
+	tokens[count] = strdup(token);
 	while (token != NULL && count < size - 1)
 	{
-		tokens[count] = token;
+		tokens[count] = strdup(token);
 		count++;
 		token = strtok(NULL, delim);
 	}
