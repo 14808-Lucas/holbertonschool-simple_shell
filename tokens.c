@@ -13,17 +13,14 @@
 int load_tokens(char **tokens, char *line, int size, int phase)
 {
 	char *token;
-	int count = 0;
+	int count;
 	char delim[] = "|\n";
 
 	if (phase != 0)
 		delim[0] = ' ';
 
+	count = 0;
 	token = strtok(line, delim);
-	if (token == NULL)
-		return (0);
-
-	tokens[count] = strdup(token);
 	while (token != NULL && count < size - 1)
 	{
 		tokens[count] = strdup(token);
