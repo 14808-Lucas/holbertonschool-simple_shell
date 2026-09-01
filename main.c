@@ -21,8 +21,7 @@ int main(int argc, char **argv)
 	tokcnt = status = 0;
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
-			print_prompt();
+		print_prompt();
 		charline = read_line(&is_eof);
 		if (charline != NULL)
 		{
