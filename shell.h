@@ -16,6 +16,7 @@
 
 extern char **environ;
 
+int internal(char **array);
 char **alloc_string_array(size_t size);
 void free_string_array(char **array, size_t size);
 void print_prompt(void);

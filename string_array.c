@@ -9,8 +9,8 @@
 char **alloc_string_array(size_t size)
 {
 	size_t i = 0;
-
 	char **array = malloc(size * sizeof(char *));
+
 	if (!array)
 		return (NULL);
 	while (i < size)
@@ -18,7 +18,7 @@ char **alloc_string_array(size_t size)
 		array[i] = NULL;
 		i++;
 	}
-	return array;
+	return (array);
 }
 
 /**
@@ -31,7 +31,7 @@ char **alloc_string_array(size_t size)
 void free_string_array(char **array, size_t size)
 {
 	size_t i = 0;
-	
+
 	if (!array)
 		return;
 	while (i < size)

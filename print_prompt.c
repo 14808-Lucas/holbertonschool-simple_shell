@@ -10,7 +10,7 @@ void print_prompt(void)
 	char cwd[PATH_MAX];
 
 	if (isatty(STDIN_FILENO))
-	{	
+	{
 		if (getcwd(cwd, sizeof(cwd)) != NULL)
 			printf("%s%s", cwd, PROMPT);
 		else

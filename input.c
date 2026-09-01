@@ -2,7 +2,7 @@
 
 /**
  * read_line - reads one line of input from stdin using getline
- *
+ * @is_eof: helper int will change if end of file is received
  * Return: a malloc'd string containing the line read (including any
  * trailing newline), or NULL if EOF was reached or an error occurred
  */
