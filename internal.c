@@ -10,5 +10,7 @@ int internal(char **array)
 {
 	if (strcmp(array[0], "exit") == 0)
 		return (1);
+	if (strcmp(array[0], "env") == 0)
+		return (2);
 	return (0);
 }
