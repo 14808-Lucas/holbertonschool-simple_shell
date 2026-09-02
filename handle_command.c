@@ -22,4 +22,6 @@ void handle_command(char **cmd, char **tokens, size_t n,
 		*status = execute_command(cmd, environ, prog_name, line_num);
 	else if (me == 1)
 		clean_exit(tokens, cmd, charline, n, *status);
+	else if (me == 2)
+		print_env(environ);
 }
