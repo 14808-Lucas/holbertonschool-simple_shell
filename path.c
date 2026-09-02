@@ -25,23 +25,6 @@ char *get_env_value(char **envp, const char *name)
 }
 
 /**
- * duplicate_string - allocates and returns a copy of a string
- * @str: the string to copy
- *
- * Return: a malloc'd copy, or NULL if allocation failed
- */
-char *duplicate_string(const char *str)
-{
-	char *copy;
-
-	copy = malloc(strlen(str) + 1);
-	if (copy == NULL)
-		return (NULL);
-	strcpy(copy, str);
-	return (copy);
-}
-
-/**
  * join_path - builds a "dir/command" style path
  * @dir: the directory
  * @command: the command name
@@ -75,13 +58,13 @@ char *find_command_path(char *command, char **envp)
 	char *full_path;
 
 	if (strchr(command, '/') != NULL)
-		return (duplicate_string(command));
+		return (strdup(command));
 
 	path_value = get_env_value(envp, "PATH");
 	if (path_value == NULL)
 		return (NULL);
 
-	path_copy = duplicate_string(path_value);
+	path_copy = strdup(path_value);
 	if (path_copy == NULL)
 		return (NULL);
 
