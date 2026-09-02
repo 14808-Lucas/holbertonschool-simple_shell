@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-	int i, me, is_eof, cmd_argc, status, tokcnt;
+	int i, me, is_eof, cmd_argc, status, tokcnt, line_num;
 	size_t n = 6;
 	char *charline;
 	char **tokens = alloc_string_array(n);
@@ -19,13 +19,14 @@ int main(int argc, char **argv)
 
 	(void)argc;
 	signal(SIGINT, handle_sigint);
-	tokcnt = status = 0;
+	tokcnt = status = line_num = 0;
 	while (1)
 	{
 		print_prompt();
 		charline = read_line(&is_eof);
 		if (charline != NULL)
 		{
+			line_num++;
 			tokcnt = load_tokens(tokens, charline, n, 0);
 			if (tokcnt > 0)
 			{
@@ -37,7 +38,8 @@ int main(int argc, char **argv)
 					{
 						me = internal(cmd);
 						if (me == 0)
-							status = execute_command(cmd, environ, argv[0]);
+							status = execute_command(cmd, environ,
+							argv[0], line_num);
 						if (me == 1)
 							clean_exit(tokens, cmd, n);
 					}
