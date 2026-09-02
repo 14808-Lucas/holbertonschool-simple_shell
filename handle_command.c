@@ -9,6 +9,7 @@
  * @prog_name: the shell's own name, for error messages
  * @line_num: the current line number, for error messages
  * @status: pointer to the shell's exit status, updated on execution
+ * @charline: pointer to input line, required to pass to exit
  */
 
 void handle_command(char **cmd, char **tokens, size_t n,

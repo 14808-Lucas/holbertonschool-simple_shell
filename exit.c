@@ -1,16 +1,17 @@
 #include "shell.h"
 
 /**
- * clean_exit - function to correctly free memory, and conditionally 
+ * clean_exit - function to correctly free memory, and conditionally
  * print new line before exiting program
  * @array1: the first array to free
  * @array2: the 2nd array to free
+ * @charline: also free the line used to read input
  * @n: the size of the arrays
  * @exit_value: passes a required exit value
  * Return: always void
  */
 
-void clean_exit(char **array1, char **array2, char *charline, 
+void clean_exit(char **array1, char **array2, char *charline,
 	size_t n, int exit_value)
 {
 	if (isatty(STDIN_FILENO))
