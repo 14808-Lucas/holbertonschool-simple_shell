@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 							status = execute_command(cmd, environ,
 							argv[0], line_num);
 						if (me == 1)
-							clean_exit(tokens, cmd, n);
+							clean_exit(tokens, cmd, n, 127);
 					}
 					i++;
 				}
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 			free(charline);
 		}
 		if (is_eof)
-			clean_exit(tokens, cmd, n);
+			clean_exit(tokens, cmd, n, 0);
 	}
 	return (status);
 }
