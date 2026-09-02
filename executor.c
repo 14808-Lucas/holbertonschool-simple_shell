@@ -7,6 +7,8 @@
  * @envp: environment variables to pass through to the new program
  * @prog_name: the name the shell itself was invoked with (argv[0]),
  * used to prefix error messages exactly like /bin/sh does
+ * @line_num: the line that was read and passed to this function
+ * used in error message to assist debugging
  *
  * Return: the exit status of the child process, 127 if the command could
  * not be resolved via PATH,  or 1 if fork failed

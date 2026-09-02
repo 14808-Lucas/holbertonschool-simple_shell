@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 			free(charline);
 		}
 		if (is_eof)
-		clean_exit(tokens, cmd, n);
+		clean_exit(tokens, cmd, n, 0);
 	}
 	return (status);
 }
