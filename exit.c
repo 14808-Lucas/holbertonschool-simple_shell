@@ -15,5 +15,5 @@ void clean_exit(char **array1, char **array2, size_t n)
 		printf("\n");
 	free_string_array(array1, n);
 	free_string_array(array2, n);
-	exit(0);
+	exit(127);
 }
