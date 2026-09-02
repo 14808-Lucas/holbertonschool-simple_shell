@@ -35,14 +35,15 @@ int main(int argc, char **argv)
 					cmd_argc = load_tokens(cmd, tokens[i], n, 1);
 					if (cmd_argc > 0)
 					handle_command(cmd, tokens, n, argv[0],
-					line_num, &status);
+					line_num, &status, charline);
 					i++;
 				}
 			}
 			free(charline);
+			charline = NULL;
 		}
 		if (is_eof)
-		clean_exit(tokens, cmd, n, status);
+		clean_exit(tokens, cmd, charline, n, status);
 	}
 	return (status);
 }

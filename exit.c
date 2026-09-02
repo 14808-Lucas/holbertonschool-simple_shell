@@ -10,10 +10,12 @@
  * Return: always void
  */
 
-void clean_exit(char **array1, char **array2, size_t n, int exit_value)
+void clean_exit(char **array1, char **array2, char *charline, 
+	size_t n, int exit_value)
 {
 	if (isatty(STDIN_FILENO))
 		printf("\n");
+	free(charline);
 	free_string_array(array1, n);
 	free_string_array(array2, n);
 	exit(exit_value);

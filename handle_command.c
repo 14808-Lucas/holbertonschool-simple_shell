@@ -12,7 +12,7 @@
  */
 
 void handle_command(char **cmd, char **tokens, size_t n,
-	char *prog_name, int line_num, int *status)
+	char *prog_name, int line_num, int *status, char *charline)
 {
 	int me;
 
@@ -20,5 +20,5 @@ void handle_command(char **cmd, char **tokens, size_t n,
 	if (me == 0)
 		*status = execute_command(cmd, environ, prog_name, line_num);
 	else if (me == 1)
-		clean_exit(tokens, cmd, n, *status);
+		clean_exit(tokens, cmd, charline, n, *status);
 }
