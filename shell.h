@@ -23,7 +23,7 @@ void print_prompt(void);
 int load_tokens(char **tokens, char *line, int size, int phase);
 char *read_line(int *is_eof);
 void remove_newline(char *line);
-int execute_command(char **argv, char **envp, char *prog_name);
+int execute_command(char **argv, char **envp, char *prog_name, int line_num);
 void handle_sigint(int sig);
 char *get_env_value(char **envp, const char *name);
 char *duplicate_string(const char *str);

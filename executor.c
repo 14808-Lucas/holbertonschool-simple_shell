@@ -11,7 +11,7 @@
  * Return: the exit status of the child process, 127 if the command could
  * not be resolved via PATH,  or 1 if fork failed
  */
-int execute_command(char **argv, char **envp, char *prog_name)
+int execute_command(char **argv, char **envp, char *prog_name, int line_num)
 {
 	pid_t child_pid;
 	int status;
@@ -20,7 +20,8 @@ int execute_command(char **argv, char **envp, char *prog_name)
 	full_path = find_command_path(argv[0], envp);
 	if (full_path == NULL)
 	{
-		fprintf(stderr, "%s: %s: not found\n", prog_name, argv[0]);
+		fprintf(stderr, "%s: %d: %s: not found\n",
+			prog_name, line_num,  argv[0]);
 		return (127);
 	}
 
