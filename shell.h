@@ -30,5 +30,7 @@ char *duplicate_string(const char *str);
 char *join_path(char *dir, char *command);
 char *find_command_path(char *command, char **envp);
 void clean_exit(char **array1, char **array2, size_t n, int exit_value);
+void handle_command(char **cmd, char **tokens, size_t n,
+	char *prog_name, int line_num, int *status);
 
 #endif /* SHELL_H */
