@@ -32,5 +32,6 @@ void clean_exit(char **array1, char **array2, char *charline,
 	size_t n, int exit_value);
 void handle_command(char **cmd, char **tokens, size_t n,
 	char *prog_name, int line_num, int *status, char *charline);
+void print_env(char **envp);
 
 #endif /* SHELL_H */
