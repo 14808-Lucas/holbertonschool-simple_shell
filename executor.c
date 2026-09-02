@@ -20,7 +20,7 @@ int execute_command(char **argv, char **envp, char *prog_name, int line_num)
 	full_path = find_command_path(argv[0], envp);
 	if (full_path == NULL)
 	{
-		fprintf(stderr, "%s: %d %s: not found\n",
+		fprintf(stderr, "%s: %d: %s: not found\n",
 			prog_name, line_num,  argv[0]);
 		return (127);
 	}
