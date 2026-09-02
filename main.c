@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-	int i, me, is_eof, cmd_argc, status, tokcnt, line_num;
+	int i, is_eof, cmd_argc, status, tokcnt, line_num;
 	size_t n = 6;
 	char *charline;
 	char **tokens = alloc_string_array(n);
