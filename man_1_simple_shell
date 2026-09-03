@@ -1,12 +1,24 @@
 #Name
-
-simple shell
+simple shell- shell, the standard command language interpreter. This shell is a program that acts as a user interface for communicating with an operating system. This was created to emulate how a shell operates while adding new functions to account for new parameters that would be in a traditional shell. 
 
 #Synopsis
 
 shell [command]
 
 #Description
+This simple shell works like a basic shell that works with the kernel of an operating system that runs commands, reads from a command line string and the standard input. When standard input is run (interactively) in terminal, hsh prints a "$$$ " prompt, reads one line, and executes it, repeating until end-of-file (Ctrl-D). When standard input is not interactive  terminal (piped or redirected) no prompt is printed which matches the output of /bin/sh.
 
-simple shell is a simple command language interpreter built for the purpose of
-learning.
+The shell accounts for single word commands and multiple commands which is separated by a "|" symbol. This allows for each commands to be executed in sequence.It navigates through our shells environment variable by navigating PATH through the directories till it hits a file that matches that command.  If our command can't be executed through PATH, an error is printed to standard error in the form of " prog_name: command: not found" 
+
+SIGNALS :
+The shell catches SIGINT (ctrl + C). At an interactive prompt, SIGINT interrupts the current input line and re-displays the prompt and the shell is not terminated. A command running as a child process is unaffected by this handling and responds to SIGINT normally.
+
+END OF FILE :
+On reaching end of file "EOF" (ctrl + D) interactive or piped input, the shell exits with the status of the last command executed.
+
+EXIT STATUS :
+The shell exits with the status of the last command executed. If the last command can not be found it exists with the status 127 (
+
+
+we accept no arguements currently.
+
