@@ -1,12 +1,56 @@
 #Name
-
-simple shell
+simple shell- shell, the standard command language interpreter. This shell is a program that acts as a user interface for communicating with an operating system. This was created to emulate how a shell operates while adding new functions to account for new parameters that would be in a traditional shell. 
 
 #Synopsis
+hsh
 
-shell [command]
+#DESCRIPTION
+This simple shell works like a basic UNIX command that works with the kernel of an operating system that runs commands, reads from a command line string and the standard input. When standard input is run (interactively) in terminal, hsh prints the current working directory followed by a "$$$ " prompt, reads one line, and executes it, repeating until end-of-file (Ctrl-D). When standard input is not interactive  terminal (piped or redirected) no prompt is printed which matches the output of /bin/sh.
 
-#Description
+The shell accounts for single word commands and multiple arguement commands. This is separated by a "|" character, which accounts for any future pipe support. This in turn takes each segment and is tokenized and executed independently. It navigates through our shells environment variable PATH, through the directories till it hits a file that matches that command.  If our command can't be executed through PATH, an error is printed to standard error in the form of " prog_name: command: line: command: not found" 
 
-simple shell is a simple command language interpreter built for the purpose of
-learning.
+BUILT IN COMMANDS :
+exit - terminates the shell, exiting with the status of the most recently executed command.
+env - prints the current environment, one variable per line.
+
+SIGNALS :
+The shell catches SIGINT (ctrl + C). At an interactive prompt, SIGINT interrupts the current input line and re-displays the prompt and the shell is not terminated. A command running as a child process is unaffected by this handling and responds to SIGINT normally.
+
+END OF FILE :
+On reaching end of file "EOF" (ctrl + D) interactive or piped input, the shell exits with the status of the last command executed.
+
+EXIT STATUS :
+The shell exits with the status of the last command executed. If the last command can not be found it exists with the status 127 (
+
+#OPTIONS
+None. - The shell accepts not command line flags.
+
+#OPERANDS
+None. 
+
+#STDIN
+The shell reads commands from standard input, one line at a time, terminated by a newline. Input may come from an interactive terminal or from a pipe or redirected file; the shell's read behavior is identical in both cases, though prompting differs (see DESCRIPTION).
+
+#INPUT FILES
+None. The shell does not read any startup files, configuration files, or scripts on initialization; all input is taken exclusively from standard input at runtime.
+
+#ENVIRONMENT VARIABLES
+PATH — determines the directories searched to resolve a command name that does not contain a "/" (see DESCRIPTION).
+The shell's full environment is passed through unmodified to each command it executes, and is displayed in full by the env built-in. No other environment variable affects the shell's own behavior.
+
+#ASYNCHRONUS EVENTS
+
+#STDOUT
+In interactive mode, the shell writes its prompt (the current working directory followed by $$$ ) to standard output before each command is read. The env built-in writes the current environment to standard output, one variable per line. Output produced by an executed command is written directly by that command's own process and is not modified by the shell.
+
+#STDERR
+The shell writes error messages to standard error, including:
+
+- prog_name: line: command: not found, when a command cannot be resolved via PATH
+-System error messages (via perror) when fork or execve fails, or when the current working directory cannot be determined for the prompt
+
+Error output produced by an executed command is written directly by that command's own process and is not modified by the shell.
+
+
+
+
