@@ -45,7 +45,6 @@ $ echo "/bin/ls" | ./hsh
 AUTHORS    env.c       exit.c            input.c     main.c              path.c          shell.h           string_array.c
 README.md  executor.c  handle_command.c  internal.c  man_1_simple_shell  print_prompt.c  signal_handler.c  tokens.c
 ```
-
 ```
 $ cat commands.txt | ./hsh
 ```
@@ -94,9 +93,10 @@ We have implemented two builtin commands;
 
 ## Known limitations
 
-This project is very much a "for the understanding" work in progress, so a few things `sh` normally does aren't there yet:
+This project is very much a first pass that has been shaped by the testing criteria, so a few things `sh` normally does aren't there yet:
 
-- Missing built-in commands such as `cd` — everything gets looked up on `PATH` and handed off to `execve`.
+- Missing built-in commands such as `cd`, `pwd`, `alias`.
+- No Command history or previous command editing implemented.
 - No support for logical operators (`&&`, `||`), redirection (`>`, `<`), or variable expansion (`$HOME`, `$?`, etc).
 - Tokenizing does split on the pipe character `|`, laying some groundwork, but piping commands into each other isn't hooked up yet.
 
