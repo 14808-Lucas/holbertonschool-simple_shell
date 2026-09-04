@@ -14,7 +14,7 @@ cd holbertonschool-simple_shell
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
-That results in an executable called `hsh` in the current directory.
+That results in an executable named `hsh` in the current directory.
 
 ## Usage
 
@@ -50,9 +50,9 @@ README.md  executor.c  handle_command.c  internal.c  man_1_simple_shell  print_p
 $ cat commands.txt | ./hsh
 ```
 
-## How it finds commands
+## How we find commands
 
-If what you type contains a `/` (like `/bin/ls` or `./hsh`), the shell just tries to run it as-is. Otherwise it searches each directory listed in the `PATH` environment variable, tacking your command onto the end of each one, until it finds something executable. If nothing turns up, you get an error that mimics `sh`'s own format:
+If the received string contains a `/` (like `/bin/ls` or `./hsh`), the shell just tries to run it as-is. Otherwise it searches each directory listed in the `PATH` environment variable, tacking your command onto the end of each one, until it finds something executable. If nothing turns up, you get an error that mimics `sh`'s own format:
 
 ```
 $$$ egg_shell
@@ -62,6 +62,13 @@ $$$ egg_shell
 ## Signal handling
 
 Hitting `Ctrl+C` (`SIGINT`) while sitting at the prompt won't kill the shell — rather it prints a newline and gives you a fresh prompt, same as a real shell. It only affects the shell itself while it's waiting for input; once a command is actually running, that command handles its own signals.
+
+## Builtins
+We have implemented two builtin commands;
+
+* `env` - The env command displays each of the environment variables with their values.
+
+* `exit` - with 'Ctrl+C' being handled, typing exit allows the user to end the process.
 
 ## Files
 
@@ -85,7 +92,6 @@ Hitting `Ctrl+C` (`SIGINT`) while sitting at the prompt won't kill the shell —
 | `tokens.c` | Splits a line into tokens, by spaces or by pipes |
 
 
-
 ## Known limitations
 
 This project is very much a "for the understanding" work in progress, so a few things `sh` normally does aren't there yet:
@@ -99,6 +105,5 @@ This project is very much a "for the understanding" work in progress, so a few t
 Valgrind testing shows the current build has zero issues after running some commands and then exiting.
 
 ## Authors
-
-[papadar](https://github.com/papadar) 
-[14808-Lucas](https://github.com/14808-Lucas)
+* Aladar Apponyi - https://github.com/papadar
+* Lucas Fisher - https://github.com/14808-Lucas
