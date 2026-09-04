@@ -102,7 +102,15 @@ This project is very much a first pass that has been shaped by the testing crite
 
 ## Testing
 
-Valgrind testing shows the current build has zero issues after running some commands and then exiting.
+Valgrind testing shows the 1.0.0 build has zero errors after running some commands and then exiting.
+```
+==632== HEAP SUMMARY:
+==632==     in use at exit: 0 bytes in 0 blocks
+==632==   total heap usage: 13 allocs, 13 frees, 2,513 bytes allocated
+==632== All heap blocks were freed -- no leaks are possible
+==632== For lists of detected and suppressed errors, rerun with: -s
+==632== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
 
 ## Authors
 * Aladar Apponyi - https://github.com/papadar
